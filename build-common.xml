@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+
+<project name="portal-common">
+	<property environment="env" />
+
+	<property file="build.${user.name}.properties" />
+	<property file="build.${env.COMPUTERNAME}.properties" />
+	<property file="build.${env.HOST}.properties" />
+	<property file="build.${env.HOSTNAME}.properties" />
+	<property file="build.properties" />
+
+	<path id="project.classpath">
+		<pathelement path="project/classes" />
+		<fileset dir="lib/development" includes="*.jar" />
+	</path>
+
+	<taskdef classpathref="project.classpath" resource="net/sf/antcontrib/antlib.xml" />
+
+	<macrodef name="clean">
+		<sequential>
+			<delete dir="java/classes/" />
+
+			<delete dir="${app.server.portal.dir}" />
+		</sequential>
+	</macrodef>
+
+	<macrodef name="compile">
+		<sequential>
+			<mkdir dir="java/classes/" />
+
+			<javac
+				classpathref="project.classpath"
+				destdir="java/classes/"
+				includeantruntime="false"
+				srcdir="java/src/"
+			/>
+		</sequential>
+	</macrodef>
+
+	<macrodef name="deploy">
+		<sequential>
+			<copy todir="${app.server.classes.portal.dir}">
+				<fileset dir="java/classes/" />
+			</copy>
+
+			<copy todir="${app.server.lib.portal.dir}">
+				<fileset dir="lib/portal/" includes="*.jar" />
+			</copy>
+
+			<copy todir="${app.server.portal.dir}">
+				<fileset dir="docroot/" />
+			</copy>
+		</sequential>
+	</macrodef>
+
+	<macrodef name="unzip-tomcat">
+		<sequential>
+			<if>
+				<not>
+					<available file="${app.server.parent.dir}/${app.server.zip.name}" />
+				</not>
+				<then>
+					<mkdir dir="${app.server.parent.dir}" />
+
+					<get
+						dest="${app.server.parent.dir}/${app.server.zip.name}"
+						src="${app.server.zip.url}"
+						verbose="true"
+					/>
+				</then>
+			</if>
+
+			<delete dir="${app.server.dir}" />
+
+			<mkdir dir="${app.server.dir}" />
+
+			<unzip
+				dest="${app.server.parent.dir}"
+				src="${app.server.parent.dir}/${app.server.zip.name}"
+			>
+				<patternset
+					excludes="apache-tomcat-${app.server.version}/webapps/**"
+				/>
+				<mapper
+					type="glob"
+					from="apache-tomcat-${app.server.version}/*"
+					to="${app.server.dir.name}/*"
+				/>
+			</unzip>
+
+			<mkdir dir="${app.server.dir}/webapps" />
+
+			<replace
+				file="${app.server.dir}/conf/server.xml"
+				token="port=&quot;8009&quot;"
+				value="port=&quot;${app.server.private.port}&quot;"
+			/>
+
+			<replace
+				file="${app.server.dir}/conf/server.xml"
+				token="port=&quot;8080&quot;"
+				value="port=&quot;${app.server.public.port}&quot;"
+			/>
+		</sequential>
+	</macrodef>
+</project>

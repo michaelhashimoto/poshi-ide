@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+
+<project name="portal" default="build">
+	<import file="build-common.xml" />
+
+	<target name="all">
+		<unzip-tomcat />
+
+		<clean />
+
+		<compile />
+
+		<deploy />
+	</target>
+
+	<target name="build">
+		<clean />
+
+		<compile />
+
+		<deploy />
+	</target>
+
+	<target name="unzip-tomcat">
+		<unzip-tomcat />
+	</target>
+</project>
