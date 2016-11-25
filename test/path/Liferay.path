@@ -1,0 +1,40 @@
+
+<html>
+<head>
+<title>Liferay</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Liferay</td></tr>
+</thead>
+<tbody>
+<tr>
+<td>PRODUCT_LINK</td>
+<td>//li[@class='nav-item']/a/span[.='Product']</td>
+<td>Product Navigation Item</td>
+</tr>
+<tr>
+<td>SOLUTIONS_LINK</td>
+<td>//li[@class='nav-item']/a/span[.='Solutions']</td>
+<td></td>
+</tr>
+<tr>
+<td>RESOURCES_LINK</td>
+<td>//li[@class='nav-item']/a/span[.='Resources']</td>
+<td></td>
+</tr>
+<tr>
+<td>SERVICES_LINK</td>
+<td>//li[@class='nav-item']/a/span[.='Services']</td>
+<td></td>
+</tr>
+<tr>
+<td>COMPANY_LINK</td>
+<td>//li[@class='nav-item']/a/span[.='Company']</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>
