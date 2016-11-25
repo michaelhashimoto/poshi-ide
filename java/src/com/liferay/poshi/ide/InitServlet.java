@@ -31,15 +31,6 @@ public class InitServlet extends HttpServlet {
 					PoshiPathFile poshiPathFile = new PoshiPathFile(file);
 				}
 			}
-
-			PoshiPath poshiPath = PoshiPathUtil.getPoshiPath(
-				"Liferay#PRODUCT_LINK");
-
-			System.out.println(poshiPath.getKey());
-
-			System.out.println("Initializing testcase files.");
-			System.out.println("Initializing macro files.");
-			System.out.println("Initializing function files.");
 		}
 		catch (Exception e) {
 			e.printStackTrace();
