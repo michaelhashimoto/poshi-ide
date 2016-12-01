@@ -1,5 +1,10 @@
 package com.liferay.poshi.ide;
 
+import com.liferay.poshi.ide.model.PoshiPathFile;
+import com.liferay.poshi.ide.util.OSDetector;
+import com.liferay.poshi.ide.util.PropsUtil;
+import com.liferay.poshi.ide.util.PropsValues;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -14,20 +19,29 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.tools.ant.DirectoryScanner;
 
-public class InitServlet extends HttpServlet {
+public class InitUtil extends HttpServlet {
 
 	public void init() throws ServletException {
-		System.out.println("Initializing path files.");
+		PropsUtil.getProperties();
+
+		System.out.println(
+			"Reading poshi files from " + PropsValues.TEST_BASE_DIR_NAME);
 
 		try {
 			List<String> filePaths = _getFilePaths(
-				"/opt/dev/projects/github/poshi-ide/test",
-				new String[] { "**/*.path" });
+				PropsValues.TEST_BASE_DIR_NAME,
+				new String[] { "**/*.function", "**/*.macro", "**/*.path" });
 
 			for(String filePath : filePaths) {
 				File file = new File(filePath);
 
-				if (file.exists()) {
+				String fileName = file.toString();
+
+				if (fileName.endsWith(".function")) {
+				}
+				else if (fileName.endsWith(".macro")) {
+				}
+				else if (fileName.endsWith(".path")) {
 					PoshiPathFile poshiPathFile = new PoshiPathFile(file);
 				}
 			}

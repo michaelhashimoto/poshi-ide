@@ -1,5 +1,6 @@
-<%@ page import="com.liferay.poshi.ide.PoshiPath" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<%@ page import="com.liferay.poshi.ide.model.PoshiPath" %>
 
 <% PoshiPath poshiPath = (PoshiPath)request.getAttribute("poshiPath"); %>
 

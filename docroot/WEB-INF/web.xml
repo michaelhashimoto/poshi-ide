@@ -4,16 +4,24 @@
 		<welcome-file>/jsp/index.jsp</welcome-file>
 	</welcome-file-list>
 	<servlet>
-		<servlet-name>com_liferay_poshi_ide_InitServlet</servlet-name>
-		<servlet-class>com.liferay.poshi.ide.InitServlet</servlet-class>
+		<servlet-name>com_liferay_poshi_ide_InitUtil</servlet-name>
+		<servlet-class>com.liferay.poshi.ide.InitUtil</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet>
-		<servlet-name>com_liferay_poshi_ide_PathServlet</servlet-name>
-		<servlet-class>com.liferay.poshi.ide.PathServlet</servlet-class>
+		<servlet-name>com_liferay_poshi_ide_servlet_PathServlet</servlet-name>
+		<servlet-class>com.liferay.poshi.ide.servlet.PathServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>com_liferay_poshi_ide_PathServlet</servlet-name>
+		<servlet-name>com_liferay_poshi_ide_servlet_PathServlet</servlet-name>
 		<url-pattern>/path</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>com_liferay_poshi_ide_servlet_JSONPathServlet</servlet-name>
+		<servlet-class>com.liferay.poshi.ide.servlet.JSONPathServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>com_liferay_poshi_ide_servlet_JSONPathServlet</servlet-name>
+		<url-pattern>/path/json</url-pattern>
 	</servlet-mapping>
 </web-app>

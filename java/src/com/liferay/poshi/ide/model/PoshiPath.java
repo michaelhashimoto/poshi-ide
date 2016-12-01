@@ -1,4 +1,4 @@
-package com.liferay.poshi.ide;
+package com.liferay.poshi.ide.model;
 
 import java.util.List;
 

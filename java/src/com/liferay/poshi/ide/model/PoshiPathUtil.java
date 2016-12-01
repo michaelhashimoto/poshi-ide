@@ -1,4 +1,4 @@
-package com.liferay.poshi.ide;
+package com.liferay.poshi.ide.model;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,9 +18,9 @@ public class PoshiPathUtil {
 	public static void putPoshiPath(PoshiPath poshiPath) throws Exception {
 		String pathKey = poshiPath.getPathKey();
 
-		if (_poshiPaths.containsKey(pathKey)) {
+		/*if (_poshiPaths.containsKey(pathKey)) {
 			throw new Exception("Duplicate path key " + pathKey + "!");
-		}
+		}*/
 
 		_poshiPaths.put(pathKey, poshiPath);
 	}

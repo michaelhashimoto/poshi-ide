@@ -1,4 +1,4 @@
-package com.liferay.poshi.ide;
+package com.liferay.poshi.ide.util;
 
 import java.io.File;
 

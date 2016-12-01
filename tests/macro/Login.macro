@@ -1,0 +1,5 @@
+<definition>
+	<command name="login">
+		<execute function="Open" locator1="http://www.google.com/" />
+	</command>
+</definition>
