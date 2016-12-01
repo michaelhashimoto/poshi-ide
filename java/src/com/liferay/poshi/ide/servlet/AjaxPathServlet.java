@@ -13,14 +13,27 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class JSONPathServlet extends HttpServlet {
+public class AjaxPathServlet extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 		throws IOException,ServletException {
 
+		StringBuilder sb = new StringBuilder();
+
+		BufferedReader reader = request.getReader();
+
 		try {
-			PoshiPath poshiPath = PoshiPathUtil.getPoshiPath(
-				request.getParameter("pathKey"));
+			String line;
+
+			while ((line = reader.readLine()) != null) {
+				sb.append(line);
+			}
+		} finally {
+			reader.close();
+		}
+
+		try {
+			PoshiPath poshiPath = PoshiPathUtil.getPoshiPath(sb.toString());
 
 			response.setContentType("application/json");
 			response.setCharacterEncoding("utf-8");
@@ -30,8 +43,6 @@ public class JSONPathServlet extends HttpServlet {
 			out.print(poshiPath.toJSONString());
 		}
 		catch (Exception e) {
-			e.printStackTrace();
-
 			throw new ServletException(e);
 		}
 	}

@@ -4,6 +4,9 @@ import java.util.List;
 
 import org.dom4j.Element;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
 public class PoshiPath {
 
 	public PoshiPath(String fileName, Element element) throws Exception {
@@ -41,6 +44,17 @@ public class PoshiPath {
 
 	public String getLocator() {
 		return _locator;
+	}
+
+	public String toJSONString() {
+		JSONObject jsonObject = new JSONObject();
+
+		jsonObject.put("description", _description);
+		jsonObject.put("fileName", _fileName);
+		jsonObject.put("key", _key);
+		jsonObject.put("locator", _locator);
+
+		return jsonObject.toString();
 	}
 
 	private String _description;

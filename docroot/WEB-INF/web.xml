@@ -24,4 +24,12 @@
 		<servlet-name>com_liferay_poshi_ide_servlet_JSONPathServlet</servlet-name>
 		<url-pattern>/path/json</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>com_liferay_poshi_ide_servlet_AjaxPathServlet</servlet-name>
+		<servlet-class>com.liferay.poshi.ide.servlet.AjaxPathServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>com_liferay_poshi_ide_servlet_AjaxPathServlet</servlet-name>
+		<url-pattern>/path/ajax</url-pattern>
+	</servlet-mapping>
 </web-app>
