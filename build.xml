@@ -21,6 +21,10 @@
 		<deploy />
 	</target>
 
+	<target name="start">
+		<start />
+	</target>
+
 	<target name="unzip-tomcat">
 		<unzip-tomcat />
 	</target>

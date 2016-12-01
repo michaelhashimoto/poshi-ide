@@ -35,6 +35,10 @@
 				includeantruntime="false"
 				srcdir="java/src/"
 			/>
+
+			<copy todir="java/classes/">
+				<fileset dir="java/src/" includes="*.properties" />
+			</copy>
 		</sequential>
 	</macrodef>
 
@@ -51,6 +55,24 @@
 			<copy todir="${app.server.portal.dir}">
 				<fileset dir="docroot/" />
 			</copy>
+		</sequential>
+	</macrodef>
+
+	<macrodef name="start">
+		<sequential>
+			<if>
+				<isset property="test.base.dir.name" />
+				<then>
+					<echo file="${app.server.classes.portal.dir}/poshi-ide-ext.properties">
+						test.base.dir.name=${test.base.dir.name}
+					</echo>
+				</then>
+			</if>
+
+			<exec dir="${app.server.bin.dir}" executable="/bin/sh">
+				<arg value="catalina.sh" />
+				<arg value="run" />
+			</exec>
 		</sequential>
 	</macrodef>
 
