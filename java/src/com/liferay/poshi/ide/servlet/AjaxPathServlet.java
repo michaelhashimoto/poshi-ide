@@ -1,5 +1,6 @@
 package com.liferay.poshi.ide.servlet;
 
+import com.liferay.poshi.ide.SimpleWebDriver;
 import com.liferay.poshi.ide.model.PoshiPath;
 import com.liferay.poshi.ide.model.PoshiPathUtil;
 
@@ -34,6 +35,10 @@ public class AjaxPathServlet extends HttpServlet {
 
 		try {
 			PoshiPath poshiPath = PoshiPathUtil.getPoshiPath(sb.toString());
+
+			System.out.println("Finding.. " + poshiPath.getLocator());
+
+			SimpleWebDriver.toggle(poshiPath.getLocator());
 
 			response.setContentType("application/json");
 			response.setCharacterEncoding("utf-8");

@@ -11,7 +11,7 @@
 <tbody>
 <tr>
 <td>PRODUCT_LINK</td>
-<td>//li[@class='nav-item']/a/span[.='Product']</td>
+<td>//li[@class='nav-item']/a[.='Product']</td>
 <td>Product Navigation Item</td>
 </tr>
 <tr>
@@ -32,6 +32,11 @@
 <tr>
 <td>COMPANY_LINK</td>
 <td>//li[@class='nav-item']/a/span[.='Company']</td>
+<td></td>
+</tr>
+<tr>
+<td>TITLE</td>
+<td>//div[@class="w3-right"]</td>
 <td></td>
 </tr>
 </tbody>
