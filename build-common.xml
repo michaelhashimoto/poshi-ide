@@ -69,10 +69,22 @@
 				</then>
 			</if>
 
-			<exec dir="${app.server.bin.dir}" executable="/bin/sh">
-				<arg value="catalina.sh" />
-				<arg value="run" />
-			</exec>
+			<if>
+				<os family="unix" />
+				<then>
+					<exec dir="${app.server.bin.dir}" executable="/bin/sh">
+						<arg value="catalina.sh" />
+						<arg value="run" />
+					</exec>
+				</then>
+				<else>
+					<exec dir="${app.server.bin.dir}" executable="cmd.exe">
+						<arg value="/c" />
+						<arg value="catalina.bat" />
+						<arg value="run" />
+					</exec>
+				</else>
+			</if>
 		</sequential>
 	</macrodef>
 

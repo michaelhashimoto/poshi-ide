@@ -1,5 +1,7 @@
 package com.liferay.poshi.ide;
 
+import com.liferay.poshi.ide.util.OSDetector;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -15,7 +17,12 @@ public class SimpleWebDriver {
 	public static void start(String xpath) {
 		System.out.println("Starting WebDriver...");
 
-		System.setProperty("webdriver.gecko.driver","/opt/dev/projects/github/poshi-ide/dependencies/geckodriver");
+		if (OSDetector.isWindows()) {
+			System.setProperty("webdriver.gecko.driver","C:/git/poshi-ide/dependencies/geckodriver.exe");
+		}
+		else {
+			System.setProperty("webdriver.gecko.driver","/opt/dev/projects/github/poshi-ide/dependencies/geckodriver");
+		}
 
 		if (_webDriver == null) {
 			_webDriver = new FirefoxDriver();
