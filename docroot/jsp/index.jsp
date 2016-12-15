@@ -25,7 +25,30 @@
 
 		<div id="result"></div>
 
+		<style type="text/css" media="screen">
+			#mystachal {
+				position: absolute;
+				top: 350;
+				right: 0;
+				bottom: 0;
+				left: 0;
+			}
+		</style>
+
+		<div id="mystachal">function foo(items) {
+var x = "All this is syntax highlighted";
+	return x;
+}</div>
+
+		<script src="/js/ace.js" type="text/javascript" charset="utf-8"></script>
+
 		<script>
+			var editor = ace.edit("mystachal");
+
+			editor.setTheme("ace/theme/monokai");
+
+			editor.getSession().setMode("ace/mode/xml");
+
 			function loadDoc() {
 				var xhttp = new XMLHttpRequest();
 
@@ -37,7 +60,7 @@
 
 				xhttp.open("post", "path/ajax", true);
 
-				var pathKey = document.getElementById("pathKey").value;
+				var pathKey = editor.getValue();
 
 				console.log(xhttp);
 				console.log(xhttp.responseText);

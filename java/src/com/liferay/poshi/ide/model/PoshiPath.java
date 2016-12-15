@@ -9,7 +9,21 @@ import org.json.simple.JSONObject;
 
 public class PoshiPath {
 
+	public PoshiPath(
+			String description, String fileName, String key, String locator)
+		throws Exception {
+
+	}
+
 	public PoshiPath(String fileName, Element element) throws Exception {
+		/*
+			<tr>
+				<td>PRODUCT_LINK</td>
+				<td>//li[@class='nav-item']/a[.='Product']</td>
+				<td>Product Navigation Item</td>
+			</tr>
+		*/
+
 		List<Element> tdElements = element.elements("td");
 
 		int size = tdElements.size();
